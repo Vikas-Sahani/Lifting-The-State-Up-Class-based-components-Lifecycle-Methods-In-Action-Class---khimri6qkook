@@ -1,3 +1,9 @@
+#main{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 h1 {
     color: #27aedb;
     text-align: center;
@@ -14,3 +20,12 @@ button{
 .bg-pink{
 	background-color:pink;
 }
+
+input{
+    border-radius: 10px;
+}
+
+li{
+    margin: 10px;
+}
+

@@ -10,31 +10,48 @@ function App() {
 	<div id="main">
 		{/* //Do not alter main div
 		//Please do not alter the functional component as tests depend on the type of component. */}
-		<form>
+		{/* <form onSubmit={function(event){
+			event.preventDefault();
+
+			if(inputVal.length===0){
+				return;
+			}
+
+			let copyOfData= data.slice();
+			let taskObj ={
+				task:inputVal,
+				id:GlobalId++,
+				complete:false
+			}
+			copyOfData.push(taskObj);
+			setData(copyOfData);
+
+			setInputVal("")
+		}}> */}
 			<input type='text' id="task"
 				 onChange={function(e){
 					setInputVal(e.target.value);
 				}}
 				value={inputVal}/> &nbsp;
-			<button type="submit" id="btn" onSubmit={function(event){
-				event.preventDefault();
+			<button type="submit" id="btn" onClick={function(event){
+					// event.preventDefault();
 
-				if(inputVal.length===0){
-					return;
-				}
+					if(inputVal.length===0){
+						return;
+					}
 
-				let copyOfData= data.slice();
-				let taskObj ={
-					task:inputVal,
-					id:GlobalId++,
-					complete:false
-				}
-				copyOfData.push(taskObj);
-				setData(copyOfData);
+					let copyOfData= data.slice();
+					let taskObj ={
+						task:inputVal,
+						id:GlobalId++,
+						complete:false
+					}
+					copyOfData.push(taskObj);
+					setData(copyOfData);
 
-				setInputVal("")
-			}}>Add</button>
-		</form>	
+					setInputVal("")
+		}}>Add</button>
+		{/* </form>	 */}
 
 		<ol>
 			{data.map((obj)=>{
