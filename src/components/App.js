@@ -5,6 +5,7 @@ let GlobalId = 1;
 function App() {
   const [inputVal, setInputVal] = useState("");
   const [data, setData] = useState([]);
+  const [newInp, setNewInp] = useState("");
 
   return (
     <div id="main">
@@ -85,30 +86,29 @@ function App() {
                     type="text"
                     className="editTask"
                     onChange={function (e) {
-                      if (e.target.value.length > 0) {
-                        let copyOfData = data.slice();
-                        for (let object of copyOfData) {
-                          if (object.id === id) {
-                            object.task = e.target.value;
-                          }
+                      setNewInp(e.target.value);
+                      let copyOfData = data.slice();
+                      for (let object of copyOfData) {
+                        if (object.id === id) {
+                          object.task = e.target.value;
                         }
-                        setData(copyOfData);
-                      } else {
-                        return;
                       }
+                      setData(copyOfData);
                     }}
                   />
                   <br />
                   <button
                     className="saveTask"
                     onClick={function () {
-                      let copyOfData = data.slice();
-                      for (let object of copyOfData) {
-                        if (object.id === id) {
-                          object.complete = !complete;
+                      if (newInp.length > 0) {
+                        let copyOfData = data.slice();
+                        for (let object of copyOfData) {
+                          if (object.id === id) {
+                            object.complete = !complete;
+                          }
                         }
+                        setData(copyOfData);
                       }
-                      setData(copyOfData);
                     }}
                   >
                     saveTask
